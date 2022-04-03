@@ -17,7 +17,6 @@ function set_attribute(el, key, value) {
     el.setAttribute(key, value);
 }
 
-
 function drawDart(cx, cy, isOnTarget, r=0.5) {
     let drawbox = document.getElementById("svg-draw");
     let dart = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
@@ -49,7 +48,6 @@ async function throwDart(minx, maxx, miny, maxy) {
         document.getElementById("out-circle").textContent=(darts.total-darts.in).toString();
     }
     darts.total++;
-    console.info("Dart " + dart_n + " is thrown and lands at ("+dart.x+","+dart.y+").");
 
     await sleep(10);
     if (onTarget) { // On target
@@ -64,7 +62,6 @@ async function estimatePi() {
    let pi = 4 * (darts.in / darts.total);
    document.getElementById("pi").textContent = pi.toString()
 }
-
 
 async function start() {
     working = true;
