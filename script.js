@@ -18,7 +18,7 @@ function set_attribute(el, key, value) {
 }
 
 
-function drawDart(cx, cy, isOnTarget, r=1) {
+function drawDart(cx, cy, isOnTarget, r=0.5) {
     let drawbox = document.getElementById("svg-draw");
     let dart = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
     set_attribute(dart, "cx", cx);
