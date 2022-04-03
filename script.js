@@ -46,7 +46,7 @@ async function throwDart(minx, maxx, miny, maxy) {
     } else {
         onTarget = false;
         new_dart = drawDart(x, y, false);
-        document.getElementById("out-circle").textContent=darts.total.toString();
+        document.getElementById("out-circle").textContent=(darts.total-darts.in).toString();
     }
     darts.total++;
     console.info("Dart " + dart_n + " is thrown and lands at ("+dart.x+","+dart.y+").");
