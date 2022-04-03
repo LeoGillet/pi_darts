@@ -1,5 +1,5 @@
 var circle = {"x": -50, "y": -50, "r": 50};
-var darts = {"in": 0, "out": 0};
+var darts = {"in": 0, "total": 0};
 var new_dart = null;
 var dart_n = 0;
 var sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -42,13 +42,13 @@ async function throwDart(minx, maxx, miny, maxy) {
         onTarget = true;
         darts.in ++;
         new_dart = drawDart(x, y, true);
-        document.getElementById("in-circle").textContent=darts.in;
+        document.getElementById("in-circle").textContent=darts.in.toString();
     } else {
         onTarget = false;
-        darts.out ++;
         new_dart = drawDart(x, y, false);
-        document.getElementById("out-circle").textContent=darts.out;
+        document.getElementById("out-circle").textContent=darts.total.toString();
     }
+    darts.total++;
     console.info("Dart " + dart_n + " is thrown and lands at ("+dart.x+","+dart.y+").");
 
     await sleep(10);
@@ -61,7 +61,7 @@ async function throwDart(minx, maxx, miny, maxy) {
 }
 
 async function estimatePi() {
-   let pi = darts.in / darts.out;
+   let pi = 4 * (darts.in / darts.total);
    document.getElementById("pi").textContent = pi.toString()
 }
 
@@ -87,7 +87,7 @@ async function pause() {
 }
 
 async function reset() {
-    darts.in = 0;  darts.out = 0;
+    darts.in = 0;  darts.total = 0;
     let dart_elements = document.getElementsByClassName('dart');
     while(dart_elements[0]) {
         dart_elements[0].parentNode.removeChild(dart_elements[0]);
